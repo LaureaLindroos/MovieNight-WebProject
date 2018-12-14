@@ -1,6 +1,7 @@
 package entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;)
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Movie {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
