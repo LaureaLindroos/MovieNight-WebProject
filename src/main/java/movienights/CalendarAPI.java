@@ -1,21 +1,18 @@
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+package movienights;
+
+import com.google.api.client.googleapis.auth.oauth2.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
 
+@RestController
 public class CalendarAPI {
     String CLIENT_ID = "581682841625-krmcuua7i867qn12f97v7665fles1ham.apps.googleusercontent.com";
     String CLIENT_SECRET = "3EIm9GM034GNbv53IINI4JzQ";
@@ -36,7 +33,7 @@ public class CalendarAPI {
                     CLIENT_ID,
                     CLIENT_SECRET,
                     code,
-                    "https://localhost:8080")
+                    "http://localhost:8080")
                     .execute();
         } catch (IOException e) {
             e.printStackTrace();
@@ -139,6 +136,19 @@ public class CalendarAPI {
         }
 
         return "OK";
+    }
+    private GoogleCredential getRefreshedCredentials(String refreshCode) {
+        try {
+            GoogleTokenResponse response = new GoogleRefreshTokenRequest(
+                    new NetHttpTransport(), JacksonFactory.getDefaultInstance(), refreshCode, CLIENT_ID, CLIENT_SECRET )
+                    .execute();
+
+            return new GoogleCredential().setAccessToken(response.getAccessToken());
+        }
+        catch( Exception ex ){
+            ex.printStackTrace();
+            return null;
+        }
     }
 }
 

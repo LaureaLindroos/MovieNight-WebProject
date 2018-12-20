@@ -1,5 +1,7 @@
-import entities.Movie;
-import entities.MovieList;
+package movienights;
+
+import movienights.entities.Movie;
+import movienights.entities.MovieList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
