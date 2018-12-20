@@ -1,4 +1,4 @@
-package entities;
+package movienights.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
