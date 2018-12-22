@@ -14,8 +14,8 @@ import java.util.List;
 
 @RestController
 public class CalendarAPI {
-    String CLIENT_ID = "581682841625-krmcuua7i867qn12f97v7665fles1ham.apps.googleusercontent.com";
-    String CLIENT_SECRET = "3EIm9GM034GNbv53IINI4JzQ";
+   private String CLIENT_ID = "581682841625-krmcuua7i867qn12f97v7665fles1ham.apps.googleusercontent.com";
+   private String CLIENT_SECRET = "3EIm9GM034GNbv53IINI4JzQ";
 
     @RequestMapping(value = "/storeauthcode", method = RequestMethod.POST)
     public String storeauthcode(@RequestBody String code, @RequestHeader("X-Requested-With") String encoding) {
