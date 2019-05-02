@@ -1,4 +1,4 @@
-package entities;
+package movienights.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -6,17 +6,17 @@ import java.util.List;
 
 public class MovieList {
     @JsonProperty("Search")
-    private List<Movie> movies;
+    private List<MovieOmdb> movies;
 
     public MovieList(){
 
     }
 
-    public List<Movie> getMovies() {
+    public List<MovieOmdb> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<MovieOmdb> movies) {
         this.movies = movies;
     }
 }
