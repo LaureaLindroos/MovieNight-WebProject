@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class EventAdder {
+public class EventHandler {
 
     //ToDo: Should i add 1 event/calendar or 1 event with all attendees?
 
